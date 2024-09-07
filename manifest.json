@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "Visual Studio Code Commander",
+    "version": "1.0",
+    "description": "Chrome extension to add Visual Studio Code like commander to your browser",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "storage",
+        "sessions",
+        "bookmarks",
+        "contentSettings",
+        "cookies",
+        "browsingData",
+        "notifications"
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "run_at": "document_start"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js", "useful.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "commands": {
+        "toggle-visibility": {
+            "suggested_key": {
+                "default": "Ctrl+M"
+            },
+            "description": "Toggle commander visibility"
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon64.png",
+        "128": "icons/icon128.png"
+    }
+}
